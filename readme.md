@@ -48,32 +48,32 @@ MX250
 * [WePE](http://www.wepe.com.cn/)
 * [苹果镜像](blog.daliansky.net)
 ### 安装过程
-1、调整硬盘分区，U盘刻录WePE，关机进PE系统对进行硬盘调整，Matebook14原厂硬盘分为EFI 100M,MSR 16M，Windows 80G。目标EFI 200M,MSR 16M,Windows保持不变，新建苹果HFS+ 分区分配120G
-2、回Window10，U盘刻录苹果安装镜像，镜像使用黑果小兵最新打包镜像
-3、挂载U盘EFI分区，替换CLOVER，WIN+R 打开命令行，按下命令操作挂载分区，替换掉U盘原CLOVER文件夹，不用原镜像CLOVER(缺少驱动或者config.plis配置不对)省掉跑代码直接进入安装，安装过程参照 黑果小兵 小新Air安装过程 [LINK](https://blog.daliansky.net/Lenovo-Xiaoxin-Air-13-macOS-Mojave-installation-tutorial.html)
-```cmd
-diskpart
-list disk           # 磁盘列表
-select disk n       # 选择U盘EFI分区所在的磁盘，n为磁盘号
-list partition      # 磁盘分区列表
-select partition n  # 选择EFI分区，n为EFI分区号
-set id="ebd0a0a2-b9e5-4433-87c0-68b6b72699c7"	# 设置为EFI分区
-assign letter=X     # x为EFI分区盘符
-```
-4、进BIOS，改语言改为中文，找到安全启动和软件安全芯片两个项目关闭。
-5、开机按F12 选择从U盘启动，开始安装
-6、安装完成，重复上述步骤3，将CLOVER复制到硬盘EFI分区
-7、设置HiDIP，完善还未驱动的硬件
-8、教程结束
+* 调整硬盘分区，U盘刻录WePE，关机进PE系统对进行硬盘调整，Matebook14原厂硬盘分为EFI 100M,MSR 16M，Windows 80G。目标EFI 200M,MSR 16M,Windows保持不变，新建苹果HFS+ 分区分配120G
+* 回Window10，U盘刻录苹果安装镜像，镜像使用黑果小兵最新打包镜像
+* 挂载U盘EFI分区，替换CLOVER，WIN+R 打开命令行，按下命令操作挂载分区，替换掉U盘原CLOVER文件夹，不用原镜像CLOVER(缺少驱动或者config.plis配置不对)省掉跑代码直接进入安装，安装过程参照 黑果小兵 小新Air安装过程 [LINK](https://blog.daliansky.net/Lenovo-Xiaoxin-Air-13-macOS-Mojave-installation-tutorial.html)
+  ```cmd
+  diskpart
+  list disk           # 磁盘列表
+  select disk n       # 选择U盘EFI分区所在的磁盘，n为磁盘号
+  list partition      # 磁盘分区列表
+  select partition n  # 选择EFI分区，n为EFI分区号
+  set id="ebd0a0a2-b9e5-4433-87c0-68b6b72699c7"	# 设置为EFI分区
+  assign letter=X     # x为EFI分区盘符
+  ```
+* 进BIOS，改语言改为中文，找到安全启动和软件安全芯片两个项目关闭。
+* 开机按F12 选择从U盘启动，开始安装
+* 安装完成，重复上述步骤3，将CLOVER复制到硬盘EFI分区
+* 设置HiDIP，完善还未驱动的硬件
+* 教程结束
 
 ### HiDIP 设置方法
-1、使用HiDIP脚本进行设置 [Github](https://github.com/xzhih/one-key-hidpi)
-2、复制 **DisplayVendorID-dae** 和 **Icons.plist** 到 **[/系统/资源库/Displays/Contents/Resources/Overrides/]()**
-3、使用DRM切换到1340*894分辨率
-![img](/HiDPi/01.png)
-![img](/HiDPi/02.png)
-![img](/HiDPi/03.png)
-![img](/HiDPi/04.png)
+* 使用HiDIP脚本进行设置 [Github](https://github.com/xzhih/one-key-hidpi)<br>
+* 复制 **DisplayVendorID-dae** 和 **Icons.plist** 到 **[/系统/资源库/Displays/Contents/Resources/Overrides/]()**<br>
+* 使用DRM切换到1340*894分辨率
+![img](/HiDPI/01.png)
+![img](/HiDPI/02.png)
+![img](/HiDPI/03.png)
+![img](/HiDPI/04.png)
 
 ### 声卡切换底噪，睡眠唤醒有噪音解决
 给声卡打ALCPlugFix
