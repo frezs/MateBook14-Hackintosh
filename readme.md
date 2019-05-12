@@ -67,14 +67,14 @@ MX250
 * 教程结束
 
 ### HiDIP 设置方法
-* 使用HiDIP脚本进行设置 [Github](https://github.com/xzhih/one-key-hidpi)<br>
-* 复制 **DisplayVendorID-dae** 和 **Icons.plist** 到 **[/系统/资源库/Displays/Contents/Resources/Overrides/]()**<br>
-* 使用DRM切换到1340*894分辨率
+* 使用HiDIP脚本进行设置 [Github](https://github.com/xzhih/one-key-hidpi)  
+* 复制 **DisplayVendorID-dae** 和 **Icons.plist** 到 **/系统/资源库/Displays/Contents/Resources/Overrides/**  
+* 使用DRM切换到1340*894分辨率  
 ![img](/HiDPI/01.png)
 ![img](/HiDPI/02.png)
 ![img](/HiDPI/03.png)
 ![img](/HiDPI/04.png)
 
 ### 声卡切换底噪，睡眠唤醒有噪音解决
-给声卡打ALCPlugFix
+给声卡打ALCPlugFix  
 ![img](/ALC256修复耳机切换底噪问题/01.png)
