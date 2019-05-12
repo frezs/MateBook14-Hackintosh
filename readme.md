@@ -37,11 +37,11 @@ WIFI
 MX250
 ```
 ### 补充说明
-1、耳机扬声器切换有底噪或遭遇的请自行打去底噪补丁，设置方法见下
-2、HiDIP 用RDM切换,设置方法见下面
-3、config.plis默认机型为 Macbookpro15,2 额外提供了 Macbookpro14,3 睿频文件和config.plis，切换自行替换CLVOER - kexts - Other内CPUFriendDataProvider.kext
-4、Macbookpro14,3 配置文件跑分比Macbookpro14,3 配置文件高600左右，因为CPU最低工作主频为1.2G功耗略高Macbookpro15,2配置文件
-5、Macbookpro15,2 CPU最低工作主频为800M，两个高频无差异
+* 耳机扬声器切换有底噪或遭遇的请自行打去底噪补丁，[设置方法](#声卡切换底噪睡眠唤醒有噪音解决)见下
+* HiDIP 用RDM切换,[设置方法](#hidip-设置方法)见下面
+* config.plis默认机型为 Macbookpro15,2 额外提供了 Macbookpro14,3 睿频文件和config.plis，切换自行替换CLVOER - kexts - Other内CPUFriendDataProvider.kext
+* Macbookpro14,3 配置文件跑分比Macbookpro14,3 配置文件高600左右，因为CPU最低工作主频为1.2G功耗略高Macbookpro15,2配置文件
+* Macbookpro15,2 CPU最低工作主频为800M，两个高频无差异
 
 ### 准备工具
 * 8G U盘
