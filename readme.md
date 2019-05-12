@@ -1,4 +1,4 @@
-# Huawei Matebook 14 黑苹果教程
+# Matebook 14 黑苹果教程
 >记录Matebook14 黑苹果过程，实现单硬盘MAC和Windows双系统
 
 ### 机型配置信息
