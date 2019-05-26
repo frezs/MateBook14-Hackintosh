@@ -5,7 +5,7 @@
 	<key>ACPI</key>
 	<dict>
 		<key>AutoMerge</key>
-		<true/>
+		<false/>
 		<key>DSDT</key>
 		<dict>
 			<key>Debug</key>
@@ -14,8 +14,10 @@
 			<false/>
 			<key>Fixes</key>
 			<dict>
+				<key>AddDTGP</key>
+				<false/>
 				<key>AddPNLF</key>
-				<true/>
+				<false/>
 				<key>FixHPET</key>
 				<true/>
 				<key>FixIPIC</key>
@@ -35,20 +37,6 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>RTC  to XRTC</string>
-					<key>Disabled</key>
-					<true/>
-					<key>Find</key>
-					<data>
-					UlRDXw==
-					</data>
-					<key>Replace</key>
-					<data>
-					WFJUQw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change  _CRS to XCRS in TPD0</string>
 					<key>Disabled</key>
 					<false/>
@@ -63,6 +51,48 @@
 					<key>TgtBridge</key>
 					<data>
 					VFBEMA==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change HECI to IMEI</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					SEVDSQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					SU1FSQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change GFX0 to IGPU</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					R0ZYMA==
+					</data>
+					<key>Replace</key>
+					<data>
+					SUdQVQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change HDAS to HDEF</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					SERBUw==
+					</data>
+					<key>Replace</key>
+					<data>
+					SERFRg==
 					</data>
 				</dict>
 			</array>
@@ -100,9 +130,10 @@
 		</dict>
 		<key>SortedOrder</key>
 		<array>
-			<string>SSDT-TPD0.aml</string>
-			<string>SSDT-CpuHwp.aml</string>
 			<string>SSDT-Disable-DGPU.aml</string>
+			<string>SSDT-CpuHwp.aml</string>
+			<string>SSDT-TPD0.aml</string>
+			<string>SSDT-PNLF.aml</string>
 		</array>
 	</dict>
 	<key>Boot</key>
@@ -134,7 +165,7 @@
 	<key>CPU</key>
 	<dict>
 		<key>HWPEnable</key>
-		<true/>
+		<false/>
 		<key>UseARTFrequency</key>
 		<false/>
 	</dict>
@@ -175,6 +206,22 @@
 				<key>disable-external-gpu</key>
 				<data>
 				AQAAAA==
+				</data>
+				<key>framebuffer-con1-busid</key>
+				<data>
+				AQAAAA==
+				</data>
+				<key>framebuffer-con1-enable</key>
+				<data>
+				AQAAAA==
+				</data>
+				<key>framebuffer-con1-pipe</key>
+				<data>
+				EgAAAA==
+				</data>
+				<key>framebuffer-con1-type</key>
+				<data>
+				AAgAAA==
 				</data>
 				<key>framebuffer-fbmem</key>
 				<data>
@@ -239,7 +286,7 @@
 			<false/>
 		</dict>
 		<key>ScreenResolution</key>
-		<string>1920x1080</string>
+		<string>1920x1280</string>
 		<key>Theme</key>
 		<string>blackMojave</string>
 	</dict>
@@ -322,78 +369,6 @@
 				SU9LaXM=
 				</data>
 			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Zeroing 10ec0261 codec (patched by AppleHDA Patcher.app)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				YQLsEA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleHDA</string>
-				<key>Replace</key>
-				<data>
-				AAAAAA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Zeroing 10ec0262 codec (patched by AppleHDA Patcher.app)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				YgLsEA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleHDA</string>
-				<key>Replace</key>
-				<data>
-				AAAAAA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Zeroing 10ec0885 codec (patched by AppleHDA Patcher.app)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				hQjsEA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleHDA</string>
-				<key>Replace</key>
-				<data>
-				AAAAAA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Patching 11d41984 with 10ec0236 codec (patched by AppleHDA Patcher.app)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				hBnUEQ==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleHDA</string>
-				<key>Replace</key>
-				<data>
-				NgLsEA==
-				</data>
-			</dict>
 		</array>
 	</dict>
 	<key>RtVariables</key>
@@ -402,6 +377,10 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x67</string>
+		<key>ROM</key>
+		<data>
+		A+OANoNe
+		</data>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
