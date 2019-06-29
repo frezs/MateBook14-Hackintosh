@@ -80,7 +80,7 @@
 
 ### 声卡切换底噪，睡眠唤醒有噪音解决
 给声卡打ALCPlugFix 修复耳机切换底噪问题
-![img](/ALC256修复耳机切换底噪问题/01.png)
+![img](/ALC256_ALCPlugFix/01.png)
 
 ### 更改USB WIFI图标及汉化
 效果
