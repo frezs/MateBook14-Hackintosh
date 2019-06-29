@@ -85,8 +85,11 @@
 ### 更改USB WIFI图标及汉化
 效果
 ![img](/usb-wifi/wifi-icns.png)
+
 1、拷贝dark(暗色图标)或者light(浅色图标)文件夹内文件到 /资源库/Application Support/WLAN/StatusBarApp.app(显示包内容)/Contents/Resources 替换原图标，退出登录即可生效
 ![img](/usb-wifi/wifi-icns-1.png)
+
 2、汉化WIFI语言，同上将lang-cn下Localizable.strings 文件拷贝到 /资源库/Application Support/WLAN/StatusBarApp.app(显示包内容)/Contents/Resources/English.lproj 替换原文件，退出登录即可生效
 ![img](/usb-wifi/wifi-lang-cn.png)
+
 ### 教程结束
