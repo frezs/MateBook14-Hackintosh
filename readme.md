@@ -13,6 +13,7 @@
 |LCD| 2160*1440|
 |BIOS|1.06|
 ### 更新
+-2019/06/29  更新CLOVER、VirtualSMC、I2C驱动、新增HUAWEI主题，更新后请用Kext Utility.app重建缓存(tools目录下)、添加修改USB WIFI图标及汉化
 -2019/05/26  HDMI驱动、添加IMEI补丁解决唤醒应用卡死,QiuckPlayer不能录屏、升级CLOVER为4934、更新other/kext驱动、去掉config.plis无用代码
 ### 已经驱动
 * CPU睿频
@@ -77,7 +78,14 @@
 ![img](/HiDPI/04.png)
 
 ### 声卡切换底噪，睡眠唤醒有噪音解决
-给声卡打ALCPlugFix  
+给声卡打ALCPlugFix 修复耳机切换底噪问题
 ![img](/ALC256修复耳机切换底噪问题/01.png)
 
+### 更改USB WIFI图标及汉化
+效果
+![img](/usb-wifi/wifi-icns.png)
+1、拷贝dark(暗色图标)或者light(浅色图标)文件夹内文件到 /资源库/Application Support/WLAN/StatusBarApp.app(显示包内容)/Contents/Resources 替换原图标，退出登录即可生效
+![img](/usb-wifi/wifi-icns-1.png)
+2、汉化WIFI语言，同上将lang-cn下Localizable.strings 文件拷贝到 /资源库/Application Support/WLAN/StatusBarApp.app(显示包内容)/Contents/Resources/English.lproj 替换原文件，退出登录即可生效
+![img](/usb-wifi/wifi-lang-cn.png)
 ### 教程结束

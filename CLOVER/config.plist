@@ -294,8 +294,19 @@
 	<dict>
 		<key>EDID</key>
 		<dict>
+			<key>Custom</key>
+			<data>
+			AP///////wAGEHycAAAAAA0dAQSlHhRgAm+xp1VMniUMUFQAAAAB
+			AQEBAQEBAQEBAQEBAQEBelBwoICgKFAwIDoAKMUQAAAYAAAAAAAA
+			AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/ABQMTQw
+			WktBLUJaMQoKAJ8=
+			</data>
 			<key>Inject</key>
-			<false/>
+			<true/>
+			<key>ProductID</key>
+			<string>0x8C02</string>
+			<key>VendorID</key>
+			<string>0x0DAE</string>
 		</dict>
 		<key>Inject</key>
 		<dict>
@@ -306,6 +317,8 @@
 			<key>NVidia</key>
 			<false/>
 		</dict>
+		<key>LoadVBios</key>
+		<true/>
 		<key>NvidiaSingle</key>
 		<false/>
 	</dict>
