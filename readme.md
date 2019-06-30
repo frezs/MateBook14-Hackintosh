@@ -12,11 +12,15 @@
 | 声卡 | Realtek ALC256 |
 |LCD| 2160*1440|
 |BIOS|1.06|
+
 ### 更新
+
 -2019/06/30  更新CLOVER为4972
+
 -2019/06/29  更新I2C、新增HUAWEI主题，更新后请用Kext Utility.app重建缓存(tools目录下)、添加修改USB WIFI图标及汉化
--2019/06/29  更新CLOVER、VirtualSMC、I2C驱动、新增HUAWEI主题，更新后请用Kext Utility.app重建缓存(tools目录下)、添加修改USB WIFI图标及汉化
+
 -2019/05/26  HDMI驱动、添加IMEI补丁解决唤醒应用卡死,QiuckPlayer不能录屏、升级CLOVER为4934、更新other/kext驱动、去掉config.plis无用代码
+
 ### 已经驱动
 * CPU睿频
 * 睡眠/合盖一晚测试掉电0%
@@ -28,14 +32,17 @@
 * HiDPI 1340*894
 * HDMI正常
 * 蓝牙/热启动
+
 ###  目前不完善
 * 蓝牙从WIN热启动工作正常，正常关闭开启（替换S/L/E IOBluetoothFamily.kext）购机赠送鼠标不能使用
 * 开启HiDIP分辨率最高设置1340*894，超过900分辨率唤醒会花屏
 * 亮度调节按键无效，但可以通过修改显示器快捷键，设置 - 键盘 - 快捷键 - 显示器 修改快捷键为F1 F2，若设置页面没有显示器选项，接入USB键盘后则可以出现显示器选项
 * Camera
+
 ### 无法驱动：
 * WIFI
 * MX250
+
 ### 补充说明
 * 耳机扬声器切换有底噪或遭遇的请自行打去底噪补丁，[设置方法](#声卡切换底噪睡眠唤醒有噪音解决)见下
 * HiDIP 用RDM切换,[设置方法](#hidip-设置方法)见下面
@@ -46,6 +53,7 @@
 * 8G U盘
 * [WePE](http://www.wepe.com.cn/)
 * [苹果镜像](blog.daliansky.net)
+
 ### 安装过程
 * 调整硬盘分区，U盘刻录WePE(已制作好PE盘跳过)
 * USB接入制作好的PE盘，重启机器在LOGO界面按F12进行BOOT MEUN 选择从U盘启动
