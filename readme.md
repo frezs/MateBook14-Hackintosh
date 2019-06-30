@@ -13,13 +13,9 @@
 |LCD| 2160*1440|
 |BIOS|1.06|
 ### 更新
-<<<<<<< HEAD
 -2019/06/30  更新CLOVER为4972
 -2019/06/29  更新I2C、新增HUAWEI主题，更新后请用Kext Utility.app重建缓存(tools目录下)、添加修改USB WIFI图标及汉化
-=======
 -2019/06/29  更新CLOVER、VirtualSMC、I2C驱动、新增HUAWEI主题，更新后请用Kext Utility.app重建缓存(tools目录下)、添加修改USB WIFI图标及汉化
-
->>>>>>> 27d9999ef915df0f05771eb686299d145a4b6afd
 -2019/05/26  HDMI驱动、添加IMEI补丁解决唤醒应用卡死,QiuckPlayer不能录屏、升级CLOVER为4934、更新other/kext驱动、去掉config.plis无用代码
 ### 已经驱动
 * CPU睿频
