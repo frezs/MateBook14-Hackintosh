@@ -56,7 +56,7 @@ sudo -s                # 获取超级权限，并输入密码
 sudo mount -o rw /     # 获取系统读写权限
 killall Finder         # 重启启动Finder
 ```
-* 更换网卡方案参考资料 M2(NGFF)[接口定义](https://blog.csdn.net/greless/article/details/51698662),Matebook 14 网卡使用M.2 E键，接口定义内有一组PCIe x2通道，如果这一组PCIe x2通道存，是可以驱动BCM94360CS2、DW1820A等网卡
+* 更换网卡方案参考资料 M2(NGFF)[接口定义](https://blog.csdn.net/greless/article/details/51698662),Matebook 14 网卡使用M.2 E键，接口定义内有一组PCIe x2通道，如果这一组PCIe x2通道存在，就可以驱动BCM94360CS2、DW1820A等网卡
 
 ### 准备工具
 * 8G U盘
