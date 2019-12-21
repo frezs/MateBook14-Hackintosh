@@ -42,7 +42,7 @@
 * Camera
 
 ### 无法驱动：
-* WIFI -- 查询到
+* WIFI -- 偶然看到小新pro13(网卡[AX201NGW](https://www.intel.cn/content/www/cn/zh/products/docs/wireless/wi-fi-6-ax201-module-brief.html)M.2: CNVio2接口)更换BCM94360CS2并在Windows成功驱动[帖子链接](https://post.smzdm.com/p/aqnlz47p/)，Matebook 14需要验证是否可行，详细资料看补充说明
 * MX250
 
 ### 补充说明
@@ -51,11 +51,12 @@
 * config.plis默认机型为 Macbookpro15,2 使用请自行使用CloveConfigurator生成新的序列号
 * 使用蓝牙补丁IOBluetoothFamily.kext替换S/L/E系统自带驱动，解决热启动蓝牙无法关闭问题，替换后重建缓存，从Win热启动或者使用虚拟机热启动蓝牙
 * 10.15需要先获取权限后才能修改系统文件，获取权限命令如下，重启后需要重新获取：
-  ```cmd
+```cmd
 sudo -s                # 获取超级权限，并输入密码
 sudo mount -o rw /     # 获取系统读写权限
 killall Finder         # 重启启动Finder
-  ```
+```
+* 更换网卡方案参考资料 M2(NGFF)[接口定义](https://blog.csdn.net/greless/article/details/51698662),Matebook 14 网卡使用M.2 E键，接口定义内有一组PCIe x2通道，如果这一组PCIe x2通道存，是可以驱动BCM94360CS2、DW1820A等网卡
 
 ### 准备工具
 * 8G U盘
@@ -67,7 +68,7 @@ killall Finder         # 重启启动Finder
 * 调整EFI分区，使用DiskGenius将EFI分区调整为200M（没有则新建EFI分区，新建类型一定要选择EFI分区类型），可以将多余MSR分区删掉（强迫症）。EFI分区一般放在硬盘最前面，硬盘前端没有空间就先移动系统分区使硬盘前端有200M空间再新建或者调整。因为MAC系统安装必须满足EFI分区大于200M才可以
 * 新建MAC系统分区，这个步骤非常重要，如果不新建在一下个步骤安装MAC就只能整盘格式化，创建MAC分区是无损安装的核心。根据个人要求调整好Windows系统和其他分区，再将剩余硬盘空间全部新建为苹果分区，新建任选MAC类型分区格式都可以（此处我选择的是HFS+）。这样下一个步骤去安装MAC系统就能识别到苹果分区，从而不需要格式整个硬盘
 * 安装MAC系统，系统安装完成后替换EFI分区的CLOVER
-* 从新启动重建缓存
+* 重启系统重建缓存
 
 ### 安装过程
 * 调整硬盘分区，U盘刻录WePE(已制作好PE盘跳过)
