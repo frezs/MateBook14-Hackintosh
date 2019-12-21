@@ -15,6 +15,8 @@
 
 ### 更新
 
+-2019/12/20  更新CLOVER为5101，修复HDMI/HDMI音频，新增Catalina2K/4K两套主题，添加蓝牙热启动脚本需配合Fusion虚拟机和TinyCoreLinux使用，新增10.15蓝牙[补丁](/蓝牙补丁)，测试10.14/10.15均工作正常
+
 -2019/06/30  更新CLOVER为4972
 
 -2019/06/29  更新I2C、新增HUAWEI主题，更新后请用Kext Utility.app重建缓存(tools目录下)、添加修改USB WIFI图标及汉化
@@ -34,25 +36,38 @@
 * 蓝牙/热启动
 
 ###  目前不完善
-* 蓝牙从WIN热启动工作正常，正常关闭开启（替换S/L/E IOBluetoothFamily.kext）购机赠送鼠标不能使用
+* Intel蓝牙工作正常，正常关闭开启（替换S/L/E IOBluetoothFamily.kext）,冷启动需要配合虚拟机热启动蓝牙[参考教程](http://bbs.pcbeta.com/viewthread-1807726-1-3.html)
 * 开启HiDIP分辨率最高设置1340*894，超过900分辨率唤醒会花屏
 * 亮度调节按键无效，但可以通过修改显示器快捷键，设置 - 键盘 - 快捷键 - 显示器 修改快捷键为F1 F2，若设置页面没有显示器选项，接入USB键盘后则可以出现显示器选项
 * Camera
 
 ### 无法驱动：
-* WIFI
+* WIFI -- 查询到
 * MX250
 
 ### 补充说明
 * 耳机扬声器切换有底噪或遭遇的请自行打去底噪补丁，[设置方法](#声卡切换底噪睡眠唤醒有噪音解决)见下
 * HiDIP 用RDM切换,[设置方法](#hidip-设置方法)见下面
 * config.plis默认机型为 Macbookpro15,2 使用请自行使用CloveConfigurator生成新的序列号
-* 使用蓝牙补丁IOBluetoothFamily.kext替换S/L/E系统自带驱动，解决热启动蓝牙无法关闭问题，替换后重建缓存，从Win热启动蓝牙即可工作正常
+* 使用蓝牙补丁IOBluetoothFamily.kext替换S/L/E系统自带驱动，解决热启动蓝牙无法关闭问题，替换后重建缓存，从Win热启动或者使用虚拟机热启动蓝牙
+* 10.15需要先获取权限后才能修改系统文件，获取权限命令如下，重启后需要重新获取：
+  ```cmd
+sudo -s                # 获取超级权限，并输入密码
+sudo mount -o rw /     # 获取系统读写权限
+killall Finder         # 重启启动Finder
+  ```
 
 ### 准备工具
 * 8G U盘
 * [WePE](http://www.wepe.com.cn/)
 * [苹果镜像](blog.daliansky.net)
+
+## 双系统无损安装要点：
+* 先安装Windows系统，并备份Windows的引导EFI分区的（EFI/Boot和Microsoft）
+* 调整EFI分区，使用DiskGenius将EFI分区调整为200M（没有则新建EFI分区，新建类型一定要选择EFI分区类型），可以将多余MSR分区删掉（强迫症）。EFI分区一般放在硬盘最前面，硬盘前端没有空间就先移动系统分区使硬盘前端有200M空间再新建或者调整。因为MAC系统安装必须满足EFI分区大于200M才可以
+* 新建MAC系统分区，这个步骤非常重要，如果不新建在一下个步骤安装MAC就只能整盘格式化，创建MAC分区是无损安装的核心。根据个人要求调整好Windows系统和其他分区，再将剩余硬盘空间全部新建为苹果分区，新建任选MAC类型分区格式都可以（此处我选择的是HFS+）。这样下一个步骤去安装MAC系统就能识别到苹果分区，从而不需要格式整个硬盘
+* 安装MAC系统，系统安装完成后替换EFI分区的CLOVER
+* 从新启动重建缓存
 
 ### 安装过程
 * 调整硬盘分区，U盘刻录WePE(已制作好PE盘跳过)
