@@ -15,7 +15,7 @@
 
 ### 更新
 
--2020/02/29  更新CLOVER 5104，AirportBrcmFixup 2.0.6，AppleALC 1.4.6，CPUFriden 1.2.0，Lilu 1.4.1，NoTouchID 1.0.3，NullEthernet 1.0.6，WhateverGreen 1.3.6，新增[IntelBluetoothFirmware ](http://bbs.pcbeta.com/viewthread-1807726-1-3.html)补丁解决冷启动无法加载蓝牙问题，以上均在Catilina 10.15.3通过测试
+-2020/02/29  更新CLOVER 5104，AirportBrcmFixup 2.0.6，AppleALC 1.4.6，CPUFriden 1.2.0，Lilu 1.4.1，NoTouchID 1.0.3，NullEthernet 1.0.6，WhateverGreen 1.3.6，新增[IntelBluetoothFirmware ](https://github.com/zxystd/IntelBluetoothFirmware)补丁解决冷启动无法加载蓝牙问题，以上均在Catilina 10.15.3通过测试
 
 -2019/12/20  更新CLOVER为5101，修复HDMI/HDMI音频，新增Catalina2K/4K两套主题，添加蓝牙热启动脚本需配合Fusion虚拟机和TinyCoreLinux使用，新增10.15蓝牙[补丁](/蓝牙补丁)，测试10.14/10.15均工作正常
 
