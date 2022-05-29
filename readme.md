@@ -1,5 +1,7 @@
-# Matebook 14 黑苹果教程
->记录Matebook14黑苹果过程，无损完成单硬盘MAC和Windows双系统
+# Matebook 14/13 (2019/2020/2021) MacOS Monterey & Bigsur 黑苹果安装教程
+>记录Matebook14黑苹果过程，无损完成单硬盘Macos Monterey & Bigsur 和Windows 11双系统安装
+
+【 中文 | [English](readme_EN.md) 】
 
 ### 机型配置信息
 | 项目 | 详细参数|
@@ -14,6 +16,13 @@
 |BIOS|1.06|
 
 ### 更新
+
+-2022/05/28 更新
+* 删除`CLOVER`驱动，修改为`OpenCore`驱动，使用版本为`7.9`，支持机型`Matebook 14/13 (2019/2020/2021)`安装`Bigsur`和`Monterey`，长期完美使用
+* 添加`INTEL`无线网卡驱动，默认驱动为`Monterey`的，若要切换无线网卡驱动，请解压`/EFI/OC/AirportItlwm_v2.1.0_stable_BigSur.kext.zip`或者`/EFI/OC/AirportItlwm_v2.1.0_stable_Monterey.kext.zip`直接替换`/EFI/OC/Kexts/AirportItlwm.kext`即可
+* 修复`HiDIP`分辨率设置过高会，开盖会花屏的问题，现在没有设置分辨率的限制，建议设置参数为`1680x1120 1500x1000 1350x900`，[设置方法](#hidip-设置方法)
+* 修复`Monterey`Cpu无法硬解的问题
+* 修复`HDMI`黑屏问题，支持热插拔
 
 -2020/04/25  此次更新使用[Matebook_13_14_2020_Hackintosh_OpenCore](https://github.com/Zero-zer0/Matebook_13_14_2020_Hackintosh_OpenCore)项目path补丁和kext，理论此CLOVER可以支持Matebook14 2020款机器。本人Matebook14 2019使用[Matebook_13_14_2020_Hackintosh_OpenCore](https://github.com/Zero-zer0/Matebook_13_14_2020_Hackintosh_OpenCore)所有功能正常，建议使用OpenCore启动，对[Zero-zer0](https://github.com/Zero-zer0)贡献表示感谢。
 
@@ -31,33 +40,21 @@
 * CPU睿频
 * 唤醒
 * 录音
-* 扬声器/耳机可自动切换
+* 扬声器/耳麦
 * 触摸板/手势
 * USB3.0/2.0
 * HiDPI
 * HDMI正常
-* 蓝牙/热启动
-
-###  目前不完善
-* 开启HiDIP分辨率睡眠唤醒会有一闪的花屏
-* Camera
-* 耳麦无法录音
+* 蓝牙
+* WIFI(INTEL无线网卡)
 
 ### 无法驱动：
-* WIFI -- 偶然看到小新pro13(网卡[AX201NGW](https://www.intel.cn/content/www/cn/zh/products/docs/wireless/wi-fi-6-ax201-module-brief.html)M.2: CNVio2接口)更换BCM94360CS2并在Windows成功驱动[帖子链接](https://post.smzdm.com/p/aqnlz47p/)，Matebook 14需要验证是否可行，详细资料看补充说明
-* MX250
+* Camera
+* MX250及其他规格独立显卡
 
 ### 补充说明
-* 耳机扬声器切换有底噪或遭遇的请自行打去底噪补丁，[设置方法](#声卡切换底噪睡眠唤醒有噪音解决)见下
 * HiDIP 用RDM切换,[设置方法](#hidip-设置方法)见下面
-* config.plis默认机型为 Macbookpro15,2 使用请自行使用CloveConfigurator生成新的序列号
-* 10.15需要先获取权限后才能修改系统文件，获取权限命令如下，重启后需要重新获取：
-```cmd
-sudo -s                # 获取超级权限，并输入密码
-sudo mount -o rw /     # 获取系统读写权限
-killall Finder         # 重启启动Finder
-```
-* 更换网卡方案参考资料 M2(NGFF)[接口定义](https://blog.csdn.net/greless/article/details/51698662),Matebook 14 网卡使用M.2 E键，接口定义内有一组PCIe x2通道，如果这一组PCIe x2通道存在，就可以驱动BCM94360CS2、DW1820A等网卡
+* config.plis默认机型为 Macbookpro15,2 可自行使用工具生成新的序列号，不建议修改机型
 
 ### 准备工具
 * 8G U盘
@@ -65,19 +62,18 @@ killall Finder         # 重启启动Finder
 * [苹果镜像](blog.daliansky.net)
 
 ## 双系统无损安装要点：
-* 先安装Windows系统，并备份Windows的引导EFI分区的（EFI/Boot和Microsoft）
+* 先安装Windows11系统，并备份Windows的引导EFI分区的（EFI/Boot和Microsoft）
 * 调整EFI分区，使用DiskGenius将EFI分区调整为200M（没有则新建EFI分区，新建类型一定要选择EFI分区类型），可以将多余MSR分区删掉（强迫症）。EFI分区一般放在硬盘最前面，硬盘前端没有空间就先移动系统分区使硬盘前端有200M空间再新建或者调整。因为MAC系统安装必须满足EFI分区大于200M才可以
 * 新建MAC系统分区，这个步骤非常重要，如果不新建在一下个步骤安装MAC就只能整盘格式化，创建MAC分区是无损安装的核心。根据个人要求调整好Windows系统和其他分区，再将剩余硬盘空间全部新建为苹果分区，新建任选MAC类型分区格式都可以（此处我选择的是HFS+）。这样下一个步骤去安装MAC系统就能识别到苹果分区，从而不需要格式整个硬盘
-* 安装MAC系统，系统安装完成后替换EFI分区的CLOVER
-* 重启系统重建缓存
+* 安装MAC系统，系统安装完成后替换EFI分区的`EFI`文件夹
 
 ### 安装过程
 * 调整硬盘分区，U盘刻录WePE(已制作好PE盘跳过)
-* USB接入制作好的PE盘，重启机器在LOGO界面按F12进行BOOT MEUN 选择从U盘启动
+* USB接入制作好的PE盘，重启机器在LOGO界面按F12进行Boot Menu 选择从U盘启动
 * 进PE系统使用傲梅助手对机器硬盘调整（以Matebook14为例，将原厂硬盘分为EFI 100M,MSR 16M，Windows 80G调整为EFI 200M,MSR 16M,Windows保持不变）
 * 打开DiskGenius在硬盘最后端，新建苹果HFS+（建议分区分配120G）此步骤非常重要，如不建立HFS+分区进入mac安装磁盘工具出现无法抹盘，这是无损安装双系统的关键，不格盘安装
 * 回WIN，将U盘刻录苹果安装镜像，镜像推荐使用黑果小兵最新打包镜像
-* 挂载U盘EFI分区，替换CLOVER，WIN+R 打开命令行，按下命令操作挂载分区，替换掉U盘EFI分区原CLOVER文件夹，若不熟悉命令也可使用DiskGenius给U盘分配盘符
+* 挂载U盘EFI分区，替换U盘EFI分区内的`EFI`文件夹
   ```cmd
   diskpart
   list disk           # 磁盘列表
@@ -87,25 +83,19 @@ killall Finder         # 重启启动Finder
   set id="ebd0a0a2-b9e5-4433-87c0-68b6b72699c7"	# 设置为EFI分区
   assign letter=X     # x为EFI分区盘符
   ```
-* 不使用镜像黑果小兵的CLOVER(缺少驱动或者config.plis配置不对)省掉跑代码直接进入安装，安装过程参照 黑果小兵 小新Air macOS Mojave安装过程 [LINK](https://blog.daliansky.net/Lenovo-Xiaoxin-Air-13-macOS-Mojave-installation-tutorial.html)
 
 * 进BIOS，改语言改为中文，找到安全启动和软件安全芯片两个项目关闭。
 * 开机按F12 选择从U盘启动，开始安装
-* 完成安装后，将CLOVER复制到硬盘EFI分区，mac系统使用CloveConfigurator挂载EFI分区，WIN同上步骤
-* 设置HiDIP，备份S/L/E系统驱动IOBluetoothFamily.kext并补丁进行替换，重建缓存
-* 教程结束
+* 完成安装后，将CLOVER复制到硬盘EFI分区(进入Mac系统后，挂载EFI分区，复制U盘EFI分区的`OC`文件夹和`BOOT`文件夹到挂载的硬盘`EFI`分区
 
 ### HiDIP 设置方法
-* 使用HiDIP脚本进行设置 [Github](https://github.com/xzhih/one-key-hidpi) ，选择开启HiDPI（不注入EDID），图标自选，自定义几个3:2的分辨率，如1650x1100, 1500x1000, 1350x900等
-* 或复制 **DisplayVendorID-dae** 和 **Icons.plist** 到 **/系统/资源库/Displays/Contents/Resources/Overrides/**  
-* 重启使用DRM切换到分辨率
+* 使用HiDIP脚本进行设置 [Github](https://github.com/xzhih/one-key-hidpi) ，选择开启HiDPI（不注入EDID），图标自选，自定义几个3:2的分辨率，如1680x1120 1500x1000 1350x900等
 
-### 声卡切换底噪，睡眠唤醒有噪音解决
-给声卡打ALCPlugFix 修复耳机切换底噪问题
+### 声卡偶尔外放出现噪音的解决方法
+* 偶尔外放播放出现底噪[声音沙哑]问题，进入声音设置->声音控制偏好->将输入与输出选项进行切换一下即可恢复外放正常播放
 
-### 更改USB WIFI图标及汉化
-1、拷贝dark(暗色图标)或者light(浅色图标)文件夹内文件到 /资源库/Application Support/WLAN/StatusBarApp.app(显示包内容)/Contents/Resources 替换原图标，退出登录即可生效
-
-2、汉化WIFI语言，同上将lang-cn下Localizable.strings 文件拷贝到 /资源库/Application Support/WLAN/StatusBarApp.app(显示包内容)/Contents/Resources/English.lproj 替换原文件，退出登录即可生效
+### 写在最后
+* `OpenCore`版本不是最新就最好，合适的版本达到稳定即可，若要升级`OpenCore`版本推荐使用，[OCAuxiliaryTools](https://github.com/ic005k/OCAuxiliaryTools/blob/master/READMe-cn.md)
+* [截图](./Screenshots/)请看这里
 
 ### 教程结束
